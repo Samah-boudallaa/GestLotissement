@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <!-- Titre principal -->
+    <h2 class="page-title"><i class="fas fa-city"></i> LotisManager — Tableau des lotissements</h2>
+
+    {% if lots and lots|length > 0 %}
+    <!-- Actions -->
+    <div class="table-actions">
+        <input id="search" placeholder="Rechercher (nom, vocation)" />
+        <a class="btn" href="{{ url_for('upload_file') }}">
+            <i class="fas fa-upload"></i> Importer un autre fichier
+        </a>
+    </div>
+
+    <!-- Statistiques -->
+    <section class="summary card">
+        <h3><i class="fas fa-chart-bar"></i> Statistiques globales</h3>
+        <p><strong>Total des lotissements :</strong> {{ total }}</p>
+
+        {% if sum_etages != total or sum_vocations != total %}
+        <div class="warning">
+            ⚠️ Attention : incohérence détectée ({{ sum_etages }} étages / {{ sum_vocations }} vocations pour {{ total }} lots).
+        </div>
+        {% endif %}
+
+        <div class="stats-flex">
+            <div class="stat-col">
+                <h4>Répartition par étages</h4>
+                <table>
+                    {% for etage, count in etages_counter.items() %}
+                    <tr><th>{{ etage }}</th><td>{{ count }}</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="stat-col">
+                <h4>Répartition par vocation</h4>
+                <table>
+                    {% for voc, count in vocation_counter.items() %}
+                    <tr><th>{{ voc }}</th><td>{{ count }}</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graphiques -->
+    <section class="charts-flex">
+        <div class="chart-container">
+            <h4><i class="fas fa-chart-column"></i> Étages</h4>
+            <canvas id="chartEtages"></canvas>
+        </div>
+        <div class="chart-container">
+            <h4><i class="fas fa-chart-pie"></i> Vocations</h4>
+            <canvas id="chartVocations"></canvas>
+        </div>
+    </section>
+
+    <!-- Tableau principal -->
+    <section class="card">
+        <h3><i class="fas fa-database"></i> Données détaillées</h3>
+        <table id="lots-table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Nombre d'étages</th>
+                    <th>Vocation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for l in lots %}
+                <tr>
+                    <td>{{ l.nom }}</td>
+                    <td>{{ l.etages }}</td>
+                    <td>{{ l.vocation }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% else %}
+        <p class="muted">Aucune donnée de lotissements disponible. Importez un fichier pour commencer.</p>
+    {% endif %}
+</div>
+
+<!-- Scripts Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // ==== Données Étages ====
+    const etagesLabels = [
+        {% for etage, count in etages_counter.items() %}
+            "{{ etage }}",
+        {% endfor %}
+    ];
+    const etagesData = [
+        {% for etage, count in etages_counter.items() %}
+            {{ count }},
+        {% endfor %}
+    ];
+
+    // ==== Données Vocations ====
+    const vocLabels = [
+        {% for voc, count in vocation_counter.items() %}
+            "{{ voc }}",
+        {% endfor %}
+    ];
+    const vocData = [
+        {% for voc, count in vocation_counter.items() %}
+            {{ count }},
+        {% endfor %}
+    ];
+
+    // ==== Graphique barres (étages) ====
+    new Chart(document.getElementById("chartEtages"), {
+        type: "bar",
+        data: {
+            labels: etagesLabels,
+            datasets: [{
+                label: "Nombre de lots",
+                data: etagesData,
+                backgroundColor: "#3b82f6"
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
+        }
+    });
+
+    // ==== Graphique camembert (vocations) ====
+    new Chart(document.getElementById("chartVocations"), {
+        type: "pie",
+        data: {
+            labels: vocLabels,
+            datasets: [{
+                data: vocData,
+                backgroundColor: ["#3b82f6","#10b981","#f59e0b","#ef4444","#6366f1","#8b5cf6","#14b8a6"]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: "bottom" } }
+        }
+    });
+});
+</script>
+{% endblock %}

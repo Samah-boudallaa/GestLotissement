@@ -1,0 +1,222 @@
+:root{
+  --bg: #f9fafb;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --muted: #6b7280;
+  --text: #111827;
+  --accent: #10b981;
+  --highlight: #ffd700; /* couleur dorée pour hover nav */
+}
+
+/* Dark theme variables */
+body.dark-mode {
+  --bg: #0b1220;
+  --card: #0f1724;
+  --primary: #3b82f6;
+  --muted: #9ca3af;
+  --text: #e6eef8;
+  --accent: #34d399;
+  --highlight: #facc15; /* doré plus clair pour le dark mode */
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin:0; padding:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ----- HEADER ----- */
+.site-header{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 20px; background: linear-gradient(90deg,var(--primary), #1d4ed8);
+  color:white;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.logo-icon {
+    font-size: 1.4rem;
+    color: white;
+}
+.app-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+}
+.icon-btn{ background:transparent; border:none; color:white; font-size:1.1rem; cursor:pointer; padding:8px; border-radius:8px}
+.icon-btn:hover{ background: rgba(255,255,255,0.08) }
+
+/* ----- NAVIGATION INTERACTIVE ----- */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+.main-nav a {
+    position: relative;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 5px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.main-nav a:hover {
+    color: var(--highlight);
+    transform: translateY(-2px) scale(1.05);
+}
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--highlight);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.main-nav a:hover::after {
+    width: 80%;
+}
+.main-nav a.active {
+    color: var(--highlight);
+}
+.main-nav a.active::after {
+    width: 80%;
+}
+
+/* Container */
+.container{ max-width:1100px; margin:24px auto; padding:16px; }
+
+/* Hero */
+.hero{ display:flex; gap:20px; align-items:center; margin-bottom:20px; }
+.hero-left{ flex:2 }
+.hero-right{ flex:1; display:flex; justify-content:center; align-items:center }
+.card-illu{ background:var(--card); padding:28px; border-radius:12px; box-shadow:0 8px 24px rgba(2,6,23,0.08); display:flex; align-items:center; justify-content:center }
+
+/* Buttons */
+.btn{ background:var(--primary); color:white; padding:10px 14px; border-radius:10px; text-decoration:none; display:inline-block; font-weight:600; margin-right:10px; transition: all .2s }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.15) }
+.btn.ghost{ background:transparent; color:var(--primary); border:1px solid rgba(37,99,235,0.12) }
+.btn.small{ padding:6px 10px; font-size:0.9rem }
+
+/* Form */
+.form-section{ background:var(--card); padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.06) }
+.drop-area{ border:2px dashed rgba(99,102,241,0.12); padding:28px; text-align:center; border-radius:10px; transition:all .22s; background: linear-gradient(180deg, rgba(99,102,241,0.02), transparent) }
+.drop-area.dragover{ border-color: var(--primary); transform:translateY(-4px) }
+.muted{ color:var(--muted) }
+
+/* Table */
+.table-section{ background:transparent; }
+table{ width:100%; border-collapse:collapse; background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 8px 24px rgba(2,6,23,0.06) }
+th{ background:var(--primary); color:white; padding:12px; text-align:center }
+td{ padding:12px; text-align:center; border-bottom:1px solid rgba(0,0,0,0.04) }
+tr:nth-child(even){ background: rgba(0,0,0,0.02) }
+
+/* Search */
+.table-actions{ display:flex; gap:12px; justify-content:space-between; align-items:center; margin-bottom:12px }
+#search{ padding:8px 12px; border-radius:8px; border:1px solid #ddd; width:40% }
+
+/* Toasts */
+#flashes{ position:fixed; top:16px; right:16px; z-index:9999 }
+.toast{ padding:10px 14px; margin-bottom:8px; border-radius:8px; color:white; box-shadow:0 8px 20px rgba(0,0,0,0.12) }
+.toast.success{ background:var(--accent) }
+.toast.error{ background:#ef4444 }
+.toast.info{ background:#2563eb }
+
+/* Footer */
+.site-footer{ text-align:center; padding:14px; margin-top:30px; color:var(--muted) }
+
+/* Responsive */
+@media (max-width:900px){
+  .hero{ flex-direction:column }
+  .main-nav ul{ overflow:auto; }
+  #search{ width:55% }
+}
+
+/* Petite animation */
+.btn, .icon-btn, .nav a{ transition: transform .14s ease, background .14s ease }
+
+/* Summary */
+.summary table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.summary th, .summary td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: left;
+}
+.summary th {
+    color: var(--primary);
+    background: rgba(37,99,235,0.05);
+}
+.summary td {
+    font-weight: bold;
+}
+
+/* Graphiques */
+.charts-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.chart-container {
+    flex: 1;
+    max-width: 400px;
+    min-width: 300px;
+    padding: 15px;
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+    text-align: center;
+}
+
+/* Warnings */
+.warning {
+  background:#fff4e5;
+  border-left:4px solid #f59e0b;
+  padding:8px 12px;
+  margin-bottom:12px;
+  border-radius:6px;
+  color:#92400e;
+}
+
+/* Stats */
+.stats-flex {
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.stat-col {
+  flex:1;
+  min-width:220px;
+  background:var(--card);
+  padding:8px;
+  border-radius:8px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.04);
+}
+
+/* Hero accueil */
+.hero {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}

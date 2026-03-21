@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LotisManager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-left">
+            <i class="fas fa-map-marked-alt logo-icon"></i>
+            <span class="app-title">LotisManager</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a class="nav-link" href="{{ url_for('index') }}">Accueil</a></li>
+                <li><a class="nav-link" href="{{ url_for('upload_file') }}">Importer fichier</a></li>
+                <li><a class="nav-link" href="{{ url_for('list_lots') }}">Consulter lots</a></li>
+                <li><a class="nav-link" href="{{ url_for('help_page') }}">Aide</a></li>
+            </ul>
+        </nav>
+        <!-- Bouton lune -->
+        <button id="dark-toggle" class="icon-btn" title="Mode sombre">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <!-- Flash messages -->
+        <div id="flashes">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="toast {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>© 2025 • Municipalité de Kelaâ des Sraghna — LotisManager</p>
+    </footer>
+</body>
+</html>

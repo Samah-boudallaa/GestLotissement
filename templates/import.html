@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="form-section">
+    <h2><i class="fas fa-file-upload"></i> Importer un fichier Excel / CSV</h2>
+
+    <form id="upload-form" method="post" enctype="multipart/form-data">
+        <div id="drop-area" class="drop-area">
+            <p>Glisser-déposer votre fichier ici, ou</p>
+            <label class="file-label">
+                <!-- Champ caché -->
+                <input type="file" name="file" id="file-input" accept=".csv,.xls,.xlsx" hidden>
+                <span class="btn small">Choisir un fichier</span>
+            </label>
+            <p class="muted">Formats acceptés : .csv, .xls, .xlsx</p>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn"><i class="fas fa-save"></i> Télécharger</button>
+            <a class="btn ghost" href="{{ url_for('index') }}">Annuler</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

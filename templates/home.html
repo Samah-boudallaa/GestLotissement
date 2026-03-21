@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="hero">
+    <div class="hero-left">
+        <h2>Bienvenue sur <span style="color: var(--primary);">LotisManager</span></h2>
+        <p>Outil simple et moderne pour classer et suivre les lotissements.<br>
+           Importez vos fichiers Excel/CSV, consultez les résultats et gagnez du temps.</p>
+        <div style="margin-top:15px;">
+            <a href="{{ url_for('upload_file') }}" class="btn"><i class="fas fa-upload"></i> Importer un fichier</a>
+            <a href="{{ url_for('list_lots') }}" class="btn ghost"><i class="fas fa-list"></i> Consulter les lots</a>
+        </div>
+    </div>
+    <div class="hero-right">
+        <div class="card-illu">
+            <i class="fas fa-map-marked-alt fa-4x" style="color: var(--primary);"></i>
+        </div>
+    </div>
+</section>
+{% endblock %}

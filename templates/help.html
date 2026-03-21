@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="help-section">
+    <h2><i class="fas fa-info-circle"></i> Aide & Documentation</h2>
+    <p>Bienvenue dans la section d’aide de <strong>LotisManager</strong>. 
+    Voici quelques conseils pour utiliser l’application :</p>
+
+    <h3><i class="fas fa-upload"></i> Importer un fichier</h3>
+    <ul>
+        <li>Allez dans <strong>Importer fichier</strong>.</li>
+        <li>Chargez un fichier au format <code>.csv</code> ou <code>.xlsx</code>.</li>
+        <li>Le tableau sera généré automatiquement.</li>
+    </ul>
+
+    <h3><i class="fas fa-table"></i> Consulter les lots</h3>
+    <ul>
+        <li>Allez dans <strong>Consulter lots</strong>.</li>
+        <li>Vous pouvez rechercher un lotissement par <em>nom</em> ou <em>vocation</em>.</li>
+        <li>Un tableau statistique récapitule les données.</li>
+    </ul>
+
+    <h3><i class="fas fa-moon"></i> Mode sombre</h3>
+    <p>Cliquez sur <strong>l’icône lune</strong> en haut à droite pour activer/désactiver le mode sombre.</p>
+
+    <h3><i class="fas fa-question-circle"></i> Besoin d’aide ?</h3>
+    <p>Contactez le service informatique de la municipalité pour toute assistance technique.</p>
+</section>
+{% endblock %}
