@@ -1,4 +1,4 @@
-# GestLotissement 🏘️
+# GestLotissement 
 
 Application web de gestion et d'analyse des lotissements, développée lors d'un stage à la **Municipalité de Kelaa des Sraghna** pour digitaliser un processus 100% papier.
 
