@@ -1,6 +1,6 @@
-# GestLotissement 
+# GestLotissement
 
-Application web de gestion et d'analyse des lotissements, développée lors d'un stage à la **Municipalité de Kelaa des Sraghna** pour digitaliser un processus 100% papier.
+Application web de gestion et d'analyse des lotissements, développée en binôme lors d'un stage à la **Municipalité de Kelaa des Sraghna** pour digitaliser un processus 100% papier.
 
 ---
 
@@ -113,19 +113,21 @@ Accessible sur : [http://localhost:5000](http://localhost:5000)
 | Lotissement Al Fath | R+2 | Economique |
 | Résidence Sraghna | R+3 | Villa |
 
-> Les noms de colonnes sont détectés automatiquement — plusieurs variantes acceptées.
+> Les noms de colonnes sont détectés automatiquement, plusieurs variantes acceptées.
 
 ---
 
-## Auteure
+## Auteures
 
-**Samah Boudallaa**  
-Étudiante en Ingénierie des Données — EST Kelaa des Sraghna  
-[github.com/Samah-boudallaa](https://github.com/Samah-boudallaa)  
-s.boudallaa2659@uca.ac.ma
+Projet réalisé en binôme par deux étudiantes en Ingénierie des Données de l'EST Kelaa des Sraghna.
+
+| | |
+|---|---|
+| **Samah Boudallaa** | [github.com/Samah-boudallaa](https://github.com/Samah-boudallaa) · s.boudallaa2659@uca.ac.ma |
+| **Khadija Rizqy** | [github.com/khadija-rizqy](https://github.com/khadija-rizqy) · k.rizqy1110@uca.ac.ma |
 
 ---
 
 ## Contexte
 
-Projet développé lors d'un stage de 2 mois (juillet–août 2025) à la Municipalité de Kelaa des Sraghna dans le cadre de la digitalisation des services internes.
+Projet développé lors d'un stage de 2 mois (juillet-août 2025) à la Municipalité de Kelaa des Sraghna dans le cadre de la digitalisation des services internes.
